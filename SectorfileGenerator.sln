@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SectorfileGeneratorUI", "SectorfileGeneratorUI\SectorfileGeneratorUI.csproj", "{528ED932-9169-4623-99FE-B3FC42436CDF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coordinates", "Coordinates\Coordinates.csproj", "{ED9DE335-9CA7-4088-ADE2-0E6517F85314}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{0E4FB56E-4ACA-4990-AACF-3111C5549EE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{528ED932-9169-4623-99FE-B3FC42436CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{528ED932-9169-4623-99FE-B3FC42436CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{528ED932-9169-4623-99FE-B3FC42436CDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED9DE335-9CA7-4088-ADE2-0E6517F85314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED9DE335-9CA7-4088-ADE2-0E6517F85314}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED9DE335-9CA7-4088-ADE2-0E6517F85314}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED9DE335-9CA7-4088-ADE2-0E6517F85314}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E4FB56E-4ACA-4990-AACF-3111C5549EE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E4FB56E-4ACA-4990-AACF-3111C5549EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E4FB56E-4ACA-4990-AACF-3111C5549EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E4FB56E-4ACA-4990-AACF-3111C5549EE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
