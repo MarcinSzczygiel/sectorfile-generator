@@ -86,6 +86,21 @@ namespace UnitTests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void TestParseCoordinatesString()
+        {
+            //arrange
+            string given = "52°41'55''N 020°59'26''E";
+            GeoPoint expected = new GeoPoint(new Longitude(GeoCoordinatesSign.Plus, 20, 59, 26),
+                new Latitude(GeoCoordinatesSign.Plus, 52, 41, 55));
+
+            //act
+            GeoPoint coord = GeoPoint.Parse(given);
+
+            //assert
+            Assert.AreEqual(expected, coord);
+        }
+
         public TestContext TestContext { get; set; }
     }
 }
