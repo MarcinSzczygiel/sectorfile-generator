@@ -1,0 +1,5 @@
+Description, ResultLon, ResultLat, LonSign, LonDeg, LonMin, LonSec, LatSign, LatDeg, LatMin, LatSec
+, 36123, -36123, 1, 10, 2, 3, -1, 10, 2, 3
+, -36123, 32523, -1, 10, 2, 3, 1, 9, 2, 3
+, 36000, -68577, 1, 10, 0, 0, -1, 19, 2, 57
+, 703, -36123, 1, 0, 11, 43, -1, 10, 2, 3
