@@ -4,13 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Coordinates;
+using System.Text.RegularExpressions;
 
 namespace SectorfileObjects
 {
     public class Polygon
     {
-        public string Title { get; set; }
-        public string Comment { get; set; }
+        private string title, comment;
+        public string Title
+        {
+            get { return title; }
+            set { title = Polygon.RemoveSpecialCharacters(value); }
+        }
+        public string Comment
+        {
+            get { return comment; }
+            set { comment = Polygon.RemoveSpecialCharacters(value); }
+        }
         bool isClosed;
         List<GeoPoint> points;
 
@@ -73,7 +83,11 @@ namespace SectorfileObjects
             return this;
         }
 
-        public string ToSct() {
+        /// <summary>
+        /// Converts a Polygon to .SCT file format.
+        /// </summary>
+        public string ToSct()
+        {
             StringBuilder result = new StringBuilder();
             if (this.points.Count < 2)
                 return result.ToString();
@@ -110,6 +124,9 @@ namespace SectorfileObjects
             return result.ToString();
         }
 
+        /// <summary>
+        /// Converts a Polygon to .ESE file format.
+        /// </summary>
         public string ToEse()
         {
             StringBuilder result = new StringBuilder();
@@ -128,6 +145,11 @@ namespace SectorfileObjects
                 result.Append("COORD:" + this.FirstPoint.Latitude.ToString() + ":" + this.FirstPoint.Longitude.ToString() + "\n");
             }
             return result.ToString();
+        }
+
+        public static string RemoveSpecialCharacters(string str)
+        {
+            return Regex.Replace(str, "[^ a-zA-Z0-9_.-]+", "", RegexOptions.Compiled);
         }
     }
 }

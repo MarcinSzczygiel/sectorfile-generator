@@ -6,11 +6,13 @@
         xmlns:local="clr-namespace:SectorfileGeneratorUI"
         mc:Ignorable="d"
         Title="Convert coordinates" Height="600" Width="800">
-   
-        <Grid>
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition Height="25" />
+            <RowDefinition Height="45" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -18,13 +20,13 @@
                 <ColumnDefinition />              
 
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" x:Name="textSource" TextWrapping="Wrap" Text="Input coordinates"/>
-            <TextBlock Grid.Column="1" x:Name="textConverted" TextWrapping="Wrap" Text="Converted coordinates"/>
+            <TextBox Grid.Column="0" x:Name="textSource" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding InputCoordinates}" VerticalScrollBarVisibility="Auto"/>
+            <TextBox Grid.Column="1" x:Name="textConverted" TextWrapping="Wrap" AcceptsReturn="True" Text="{Binding ConvertedCoordinates}" VerticalScrollBarVisibility="Auto"/>
 
         </Grid>
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
-            <Button x:Name="btnConvertToEse" Content="Convert to .ese" Margin="3"/>
-            <Button x:Name="btnConvertToSct" Content="Convert to .sct" Margin="3"/>
+            <Button x:Name="btnConvertToEse" Content="Convert to .ese" Margin="3" Height="35" Width="100" Command="{Binding ToEse}"/>
+            <Button x:Name="btnConvertToSct" Content="Convert to .sct" Margin="3" Height="35" Width="100" Command="{Binding ToSct}"/>
         </WrapPanel>
             
         </Grid>

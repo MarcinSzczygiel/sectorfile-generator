@@ -34,7 +34,7 @@ namespace Coordinates
         /// <remarks>The correct string format is: dd°mm'ss[''|"][N|S] dd°mm'ss[''|"][E|W]</remarks>
         public static GeoPoint Parse(string input)
         {
-            string pattern = "^([0-9]{1,2})°([0-9]{1,2})'([0-9]{1,2})(''|\")([NS]{1}) ([0-9]{1,3})°([0-9]{1,2})'([0-9]{1,2})(''|\")([EW]{1})$";
+            string pattern = "^([0-9]{1,2})°([0-9]{1,2})'([0-9]{1,2})(''|\")([NS]{1}) ([0-9]{1,3})°([0-9]{1,2})'([0-9]{1,2})(''|\")([EW]{1})";
 
             Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
             Match match = regex.Match(input);
@@ -63,6 +63,21 @@ namespace Coordinates
             else
             {
                 throw new FormatException("Unsupported format. Pass coordinates in following format: dd°mm'ss[''|\"][N|S] dd°mm'ss[''|\"][E|W]");
+            }
+        }
+
+        public static bool TryParse(string input, out GeoPoint point)
+        {
+            try
+            {
+                GeoPoint pnt = GeoPoint.Parse(input);
+                point = pnt;
+                return true;
+            }
+            catch (Exception)
+            {
+                point = null;
+                return false;
             }
         }
 
