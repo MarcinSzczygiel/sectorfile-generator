@@ -9,7 +9,8 @@ namespace SectorfileObjects
 {
     public class Polygon
     {
-        string name;
+        public string Title { get; set; }
+        public string Comment { get; set; }
         bool isClosed;
         List<GeoPoint> points;
 
@@ -74,11 +75,15 @@ namespace SectorfileObjects
 
         public string ToSct() {
             StringBuilder result = new StringBuilder();
-            if (this.points.Count == 0)
+            if (this.points.Count < 2)
                 return result.ToString();
             GeoPoint current, previous;
             bool first = true;
             current = this.points[0];
+            if (!string.IsNullOrEmpty(this.Comment))
+                result.Append(";" + this.Comment + "\n");
+            if (!string.IsNullOrEmpty(this.Title))
+                result.Append(this.Title + " ");
             foreach (GeoPoint point in this.points)
             {
                 if (first)
@@ -108,8 +113,12 @@ namespace SectorfileObjects
         public string ToEse()
         {
             StringBuilder result = new StringBuilder();
-            if (this.points.Count == 0)
+            if (this.points.Count < 2)
                 return result.ToString()                    ;
+            if (!string.IsNullOrEmpty(this.Comment))
+                result.Append(";" + this.Comment + "\n");
+            if (!string.IsNullOrEmpty(this.Title))
+                result.Append(this.Title + "\n");
             foreach (GeoPoint point in this.points)
             {
                 result.Append("COORD:" + point.Latitude.ToString() + ":" + point.Longitude.ToString() + "\n");
