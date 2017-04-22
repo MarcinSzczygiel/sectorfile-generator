@@ -13,7 +13,7 @@ namespace SectorfileObjects
         bool isClosed;
         List<GeoPoint> points;
 
-        public GeoPoint First
+        public GeoPoint FirstPoint
         {
             get
             {
@@ -22,7 +22,7 @@ namespace SectorfileObjects
             }
         }
 
-        public GeoPoint Last { get
+        public GeoPoint LastPoint { get
             {
                 if (points.Count > 0) return points[points.Count-1];
                 else return null;
@@ -48,13 +48,21 @@ namespace SectorfileObjects
 
         public Polygon Close()
         {
-            isClosed = true;
+            //Polygon must be at least a triangle to be closed.
+            if (this.points.Count > 2)
+            {
+                isClosed = true;
+            }
             return this;
         }
 
         public Polygon Open()
         {
-            isClosed = false;
+            //If the last point is identical to the first point, a polygon is closed anyway.
+            if (this.FirstPoint != this.LastPoint)
+            {
+                isClosed = false;
+            }
             return this;
         }
 
@@ -87,6 +95,13 @@ namespace SectorfileObjects
                     + current.Latitude.ToString() + " "
                     + current.Longitude.ToString() + "\n");
             }
+            if (this.isClosed && this.FirstPoint != this.LastPoint)
+            {
+                result.Append(this.LastPoint.Latitude.ToString() + " "
+                    + this.LastPoint.Longitude.ToString() + " "
+                    + this.FirstPoint.Latitude.ToString() + " "
+                    + this.FirstPoint.Longitude.ToString() + "\n");
+            }
             return result.ToString();
         }
 
@@ -98,6 +113,10 @@ namespace SectorfileObjects
             foreach (GeoPoint point in this.points)
             {
                 result.Append("COORD:" + point.Latitude.ToString() + ":" + point.Longitude.ToString() + "\n");
+            }
+            if (this.isClosed && this.FirstPoint!=this.LastPoint)
+            {
+                result.Append("COORD:" + this.FirstPoint.Latitude.ToString() + ":" + this.FirstPoint.Longitude.ToString() + "\n");
             }
             return result.ToString();
         }
