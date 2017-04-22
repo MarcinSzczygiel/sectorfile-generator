@@ -14,6 +14,7 @@ namespace Coordinates
         public virtual decimal MinValue { get { return -1; } }
 
         public decimal Value { get { return value; } }
+        public abstract string Hemisphere { get; }
 
         public Coordinate(decimal value)
         {
@@ -72,6 +73,13 @@ namespace Coordinates
             x.Degrees = (byte)((valueToConvert - x.Minutes * 60 - x.Seconds) / 3600);
             return x;
         }
+        public override string ToString()
+        {
+            DegMinSec dms = this.ToDegMinSec();
+            string result = this.Hemisphere + dms.Degrees.ToString("000") + "."
+            + dms.Minutes.ToString("00") + "." + dms.Seconds.ToString("00.000").Replace(",", ".");
+            return result;
+        }
     }
 
     public class Latitude : Coordinate
@@ -81,6 +89,7 @@ namespace Coordinates
         public Latitude(GeoCoordinatesSign sign, byte deg, byte min, byte sec) : base(sign, deg, min, sec) { }
         public override decimal MaxValue { get { return 324000; } }
         public override decimal MinValue { get { return -324000; } }
+        public override string Hemisphere { get { if (this.value >= 0) return "N"; else return "S"; } }
 
     }
 
@@ -91,6 +100,7 @@ namespace Coordinates
         public Longitude(GeoCoordinatesSign sign, byte deg, byte min, byte sec) : base(sign, deg, min, sec) { }
         public override decimal MaxValue { get { return 648000; } }
         public override decimal MinValue { get { return -648000; } }
+        public override string Hemisphere { get { if (this.value >= 0) return "E"; else return "W"; } }
     }
 
     public struct DegMinSec
