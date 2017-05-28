@@ -35,6 +35,6 @@ For now, this goal has been reached. User can paste list of coordinates with met
 The main target is to create application which helps in all steps of editing the sectorfile. Here are example requirements:
 * draw lines and curves with given parameters (e.g. draw a quarter of circle around given point with radius of 2 nautical miles)
 * allow user to visually create and manage lines, especially for airport infrastructure visualization,
-* round polygons with given radius for SIR and STAR procedures visualization,
+* round polygons with given radius for [SID](https://en.wikipedia.org/wiki/Standard_instrument_departure_(SID)) and [STAR](https://en.wikipedia.org/wiki/Standard_terminal_arrival_route) procedures visualization,
 * store sectorfile in easy managed format (XML?) and convert it to .SCT and .ESE on demand.
 
