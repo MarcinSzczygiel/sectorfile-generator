@@ -69,6 +69,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -94,6 +95,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Coordinates\Coordinates.csproj">
+      <Project>{ed9de335-9ca7-4088-ade2-0e6517f85314}</Project>
+      <Name>Coordinates</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SectorfileObjects\SectorfileObjects.csproj">
+      <Project>{c417efe4-4d98-4827-b4e7-a26762d323ac}</Project>
+      <Name>SectorfileObjects</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
